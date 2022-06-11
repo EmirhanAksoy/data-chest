@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\email-service\email-service.csproj" />
   </ItemGroup>
 
 </Project>
