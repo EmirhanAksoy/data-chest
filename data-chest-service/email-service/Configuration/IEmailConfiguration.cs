@@ -1,16 +1,15 @@
 ﻿namespace email_service.Configuration
 {
-	public interface IEmailConfiguration
+    public interface IEmailConfiguration
     {
-		public string SmtpServer { get; }
-		public int SmtpPort { get; }
-		public string SmtpUsername { get; set; }
-		public string SmtpEmailAddress { get; set; }
-		public string SmtpEmailPassword { get; set; }
-
-		public string PopServer { get; }
-		public int PopPort { get; }
-		public string PopUsername { get; }
-		public string PopPassword { get; }
-	}
+        string SmtpServer { get; }
+        int SmtpPort { get; }
+        string SmtpUsername { get; set; }
+        string SmtpEmailAddress { get; set; }
+        string SmtpEmailPassword { get; set; }
+        string PopServer { get; }
+        int PopPort { get; }
+        string PopUsername { get; }
+        string PopPassword { get; }
+    }
 }
