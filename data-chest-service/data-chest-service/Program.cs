@@ -1,4 +1,11 @@
 using email_service.Configuration;
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateBootstrapLogger();
+
+Log.Information("Starting up");
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +13,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Healt check configuration
 builder.Services.AddHealthChecks();
+
+//Serilog Configuration
+builder.Host.UseSerilog((ctx, lc) => lc
+       .WriteTo.Console()
+       .ReadFrom.Configuration(ctx.Configuration));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -33,5 +45,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//Serilog request loging configuration
+app.UseSerilogRequestLogging();
 
 app.Run();
