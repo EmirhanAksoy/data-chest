@@ -3,19 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data-chest-service", "data-chest-service\data-chest-service.csproj", "{7FEA4CCC-344D-4728-85CE-E608EF8757D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "data-chest-service", "data-chest-service\data-chest-service.csproj", "{7FEA4CCC-344D-4728-85CE-E608EF8757D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "email-service", "email-service\email-service.csproj", "{2E8D964A-7287-41D1-B478-C59950A965A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "email-service", "email-service\email-service.csproj", "{2E8D964A-7287-41D1-B478-C59950A965A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "file-service", "file-service\file-service.csproj", "{B14A711D-1F8C-4FBB-8632-55C8E206E589}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "file-service", "file-service\file-service.csproj", "{B14A711D-1F8C-4FBB-8632-55C8E206E589}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cache-service", "cache-service\cache-service.csproj", "{2940C884-5AC5-4C81-85F6-108134B609C4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "db-service", "db-service\db-service.csproj", "{53C42533-DD0E-445D-89EB-0EF3D5EF768E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "db-service", "db-service\db-service.csproj", "{53C42533-DD0E-445D-89EB-0EF3D5EF768E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{8F78E239-A0E4-4680-BBD0-7C58D4401BBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shared", "shared\shared.csproj", "{907D70E3-F9AE-42D6-AD5B-95A46252A850}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shared", "shared\shared.csproj", "{907D70E3-F9AE-42D6-AD5B-95A46252A850}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{B14A711D-1F8C-4FBB-8632-55C8E206E589}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B14A711D-1F8C-4FBB-8632-55C8E206E589}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B14A711D-1F8C-4FBB-8632-55C8E206E589}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2940C884-5AC5-4C81-85F6-108134B609C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2940C884-5AC5-4C81-85F6-108134B609C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2940C884-5AC5-4C81-85F6-108134B609C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2940C884-5AC5-4C81-85F6-108134B609C4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{53C42533-DD0E-445D-89EB-0EF3D5EF768E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{53C42533-DD0E-445D-89EB-0EF3D5EF768E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53C42533-DD0E-445D-89EB-0EF3D5EF768E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -54,7 +48,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2E8D964A-7287-41D1-B478-C59950A965A1} = {8F78E239-A0E4-4680-BBD0-7C58D4401BBD}
 		{B14A711D-1F8C-4FBB-8632-55C8E206E589} = {8F78E239-A0E4-4680-BBD0-7C58D4401BBD}
-		{2940C884-5AC5-4C81-85F6-108134B609C4} = {8F78E239-A0E4-4680-BBD0-7C58D4401BBD}
 		{53C42533-DD0E-445D-89EB-0EF3D5EF768E} = {8F78E239-A0E4-4680-BBD0-7C58D4401BBD}
 		{907D70E3-F9AE-42D6-AD5B-95A46252A850} = {8F78E239-A0E4-4680-BBD0-7C58D4401BBD}
 	EndGlobalSection
