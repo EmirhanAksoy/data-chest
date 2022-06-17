@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "file-service", "file-servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "db-service", "db-service\db-service.csproj", "{53C42533-DD0E-445D-89EB-0EF3D5EF768E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{8F78E239-A0E4-4680-BBD0-7C58D4401BBD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{8F78E239-A0E4-4680-BBD0-7C58D4401BBD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shared", "shared\shared.csproj", "{907D70E3-F9AE-42D6-AD5B-95A46252A850}"
 EndProject
