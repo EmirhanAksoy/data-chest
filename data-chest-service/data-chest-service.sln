@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{8F78E239-A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shared", "shared\shared.csproj", "{907D70E3-F9AE-42D6-AD5B-95A46252A850}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domain", "domain\domain.csproj", "{28CD7A90-6EFD-4FEE-9F04-A11C970F6272}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "domain", "domain\domain.csproj", "{28CD7A90-6EFD-4FEE-9F04-A11C970F6272}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unit-test", "unit-test\unit-test.csproj", "{02119196-2B77-4CBD-A25E-575F882BD680}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{28CD7A90-6EFD-4FEE-9F04-A11C970F6272}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28CD7A90-6EFD-4FEE-9F04-A11C970F6272}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28CD7A90-6EFD-4FEE-9F04-A11C970F6272}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02119196-2B77-4CBD-A25E-575F882BD680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02119196-2B77-4CBD-A25E-575F882BD680}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02119196-2B77-4CBD-A25E-575F882BD680}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02119196-2B77-4CBD-A25E-575F882BD680}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
