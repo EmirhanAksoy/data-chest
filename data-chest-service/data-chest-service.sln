@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{8F78E239-A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shared", "shared\shared.csproj", "{907D70E3-F9AE-42D6-AD5B-95A46252A850}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domain", "domain\domain.csproj", "{28CD7A90-6EFD-4FEE-9F04-A11C970F6272}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{907D70E3-F9AE-42D6-AD5B-95A46252A850}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{907D70E3-F9AE-42D6-AD5B-95A46252A850}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{907D70E3-F9AE-42D6-AD5B-95A46252A850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28CD7A90-6EFD-4FEE-9F04-A11C970F6272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28CD7A90-6EFD-4FEE-9F04-A11C970F6272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28CD7A90-6EFD-4FEE-9F04-A11C970F6272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28CD7A90-6EFD-4FEE-9F04-A11C970F6272}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{B14A711D-1F8C-4FBB-8632-55C8E206E589} = {8F78E239-A0E4-4680-BBD0-7C58D4401BBD}
 		{53C42533-DD0E-445D-89EB-0EF3D5EF768E} = {8F78E239-A0E4-4680-BBD0-7C58D4401BBD}
 		{907D70E3-F9AE-42D6-AD5B-95A46252A850} = {8F78E239-A0E4-4680-BBD0-7C58D4401BBD}
+		{28CD7A90-6EFD-4FEE-9F04-A11C970F6272} = {8F78E239-A0E4-4680-BBD0-7C58D4401BBD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D87ACD8-6FC2-4C2D-B4F1-6918C08C5061}
