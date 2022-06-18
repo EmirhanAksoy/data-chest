@@ -4,9 +4,10 @@ namespace shared.Content_Operations
 {
     public interface IContentOperation
     {
-        Task CreateContent(Content content, string parentPath = "");
+        Task CreateContent(Content content, Stream stream, string parentPath = "");
 
-        Task DeleteContent(string path,bool includeSubItems = true);
+        void DeleteContent(string path, bool isFolder, bool includeSubItems = true);
 
     }
 }
+
