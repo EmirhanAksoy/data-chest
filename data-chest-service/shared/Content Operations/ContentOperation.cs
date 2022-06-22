@@ -8,15 +8,15 @@ namespace shared.Content_Operations
 
         public async Task CreateContent(Content content, Stream stream, string parentPath = "")
         {
-            string userRootDirectory = Path.Join(MainPath, content.CreatedUserId.ToString());
+            string userRootDirectory = Path.Join(MainPath, content.CreatedUserId.ToString(), parentPath);
 
             Directory.CreateDirectory(userRootDirectory);
 
-            string contentPath = Path.Join(userRootDirectory, parentPath, content.Name);
+            string contentPath = Path.Join(userRootDirectory, content.Name);
 
             if (content.IsFolder)
                 Directory.CreateDirectory(contentPath);
-            else 
+            else
             {
                 using FileStream fileStream = new(contentPath, FileMode.Create, FileAccess.Write);
                 await stream.CopyToAsync(fileStream);
