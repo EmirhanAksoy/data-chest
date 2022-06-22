@@ -24,7 +24,7 @@ namespace unit_test
         }
 
 
-        [Theory(DisplayName = "Create File Content - Valid Stream")]
+        [Theory(DisplayName = "Create Content - Valid Stream")]
         [InlineData("", false)]
         [InlineData(@"\Files", false)]
         [InlineData(null, false)]
@@ -54,7 +54,7 @@ namespace unit_test
             Assert.True(isContentCreated, $"{content.Name} created succesfully");
         }
 
-        [Theory(DisplayName = "Create File Content - Invalid Stream")]
+        [Theory(DisplayName = "Create Content - Invalid Stream")]
         [InlineData("", false)]
         [InlineData(@"\Files", false)]
         [InlineData(null, false)]
