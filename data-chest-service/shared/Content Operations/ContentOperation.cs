@@ -18,6 +18,9 @@ namespace shared.Content_Operations
                 Directory.CreateDirectory(contentPath);
             else
             {
+                if (stream is null)
+                    throw new ArgumentNullException("Stream");
+
                 using FileStream fileStream = new(contentPath, FileMode.Create, FileAccess.Write);
                 await stream.CopyToAsync(fileStream);
             }
