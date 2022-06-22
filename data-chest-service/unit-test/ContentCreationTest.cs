@@ -66,17 +66,21 @@ namespace unit_test
         }
 
 
-        [Fact(DisplayName = "Create File Content")]
-        public async Task CreateFileContentInRoot()
+        [Theory(DisplayName = "Create File Content")]
+        [InlineData("")]
+        [InlineData(@"\Files")]
+        [InlineData(null)]
+        [InlineData("0123456789")]
+        [InlineData("c188d074-a4d8-4105-9bc3-9fb2dddf08dd")]
+        public async Task CreateFileContent(string parentPath)
         {
-            string parentPath = string.Empty;
-
             await contentOperation.CreateContent(contentFile, contentStream, parentPath);
 
             bool isFileCreated = File.Exists(Path.Join(contentOperation.MainPath, contentFile.CreatedUserId.ToString(), parentPath, contentFile.Name));
 
             Assert.True(isFileCreated, $"{contentFile.Name} created succesfully");
         }
+
 
         [Fact(DisplayName = "Create Folder Content")]
         public async Task CreateFolderContentInRoot()
