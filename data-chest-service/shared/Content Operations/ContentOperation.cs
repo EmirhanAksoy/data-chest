@@ -24,6 +24,8 @@ namespace shared.Content_Operations
                 using FileStream fileStream = new(contentPath, FileMode.Create, FileAccess.Write);
                 await stream.CopyToAsync(fileStream);
             }
+
+            content.Path = contentPath;
         }
 
         public void DeleteContent(string path, bool isFolder, bool includeSubItems = true)
