@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Xunit;
 using System;
 using System.Diagnostics;
+using unit_test.Mock.Theory;
 
 namespace unit_test
 {
@@ -12,94 +13,62 @@ namespace unit_test
     {
         IContentOperation contentOperation = new ContentOperation();
 
-        public readonly Content contentFile;
-        public readonly Content contentFolder;
         public readonly FileStream contentStream;
 
         public ContentCreationTest()
         {
             contentOperation.MainPath = @"C:\Contents";
 
-            contentFile = new Content()
-            {
-                Id = Guid.NewGuid(),
-                Name = "Test.png",
-                CreateTime = DateTime.Now,
-                CreatedUserId = Guid.NewGuid(),
-                Extension = ".png",
-                IsDeleted = false,
-                IsFolder = false,
-                IsHidden = false,
-                IsInBin = false,
-                IsPublic = false,
-                ParentContentId = Guid.Empty,
-                Path = String.Empty,
-                Size = 0,
-                ThumbnailPath = String.Empty,
-                UpdatedUserId = Guid.Empty,
-                UpdateTime = DateTime.Now
-            };
-
-            contentFolder = new Content()
-            {
-                Id = Guid.NewGuid(),
-                Name = "Docs Test Folder",
-                CreateTime = DateTime.Now,
-                CreatedUserId = Guid.NewGuid(),
-                Extension = String.Empty,
-                IsDeleted = false,
-                IsFolder = true,
-                IsHidden = false,
-                IsInBin = false,
-                IsPublic = false,
-                ParentContentId = Guid.Empty,
-                Path = String.Empty,
-                Size = 0,
-                ThumbnailPath = String.Empty,
-                UpdatedUserId = Guid.Empty,
-                UpdateTime = DateTime.Now
-            };
-
             FileStream fs = File.OpenRead(@"C:\TestContent\test.jpg");
             contentStream = fs;
-
         }
 
 
         [Theory(DisplayName = "Create File Content")]
-        [InlineData("")]
-        [InlineData(@"\Files")]
-        [InlineData(null)]
-        [InlineData("0123456789")]
-        [InlineData("c188d074-a4d8-4105-9bc3-9fb2dddf08dd")]
-        [InlineData(@"\\\\\\Docs")]
-        public async Task CreateFileContent(string parentPath)
+        [InlineData("", false)]
+        [InlineData(@"\Files", false)]
+        [InlineData(null, false)]
+        [InlineData("0123456789", false)]
+        [InlineData("c188d074-a4d8-4105-9bc3-9fb2dddf08dd", false)]
+        [InlineData(@"\\\\\\Docs", false)]
+        [InlineData("", true)]
+        [InlineData(@"\Files", true)]
+        [InlineData(null, true)]
+        [InlineData("0123456789", true)]
+        [InlineData("c188d074-a4d8-4105-9bc3-9fb2dddf08dd", true)]
+        [InlineData(@"\\\\\\Docs", true)]
+        [InlineData("", false, true)]
+        [InlineData(@"\Files", false, true)]
+        [InlineData(null, false, true)]
+        [InlineData("0123456789", false, true)]
+        [InlineData("c188d074-a4d8-4105-9bc3-9fb2dddf08dd", false, true)]
+        [InlineData(@"\\\\\\Docs", false, true)]
+        [InlineData("", true, true)]
+        [InlineData(@"\Files", true, true)]
+        [InlineData(null, true, true)]
+        [InlineData("0123456789", true, true)]
+        [InlineData("c188d074-a4d8-4105-9bc3-9fb2dddf08dd", true, true)]
+        [InlineData(@"\\\\\\Docs", true, true)]
+        public async Task CreateContent(string parentPath, bool isFolder, bool isStreamNull = false)
         {
-            await contentOperation.CreateContent(contentFile, contentStream, parentPath);
+            Content content = Contents.GetContent(isFolder);
 
-            bool isFileCreated = File.Exists(Path.Join(contentOperation.MainPath, contentFile.CreatedUserId.ToString(), parentPath, contentFile.Name));
+            if (isStreamNull && !isFolder)
+                await Assert.ThrowsAsync<ArgumentNullException>(async () => await contentOperation.CreateContent(content, null, parentPath));
+            else
+            {
+                await contentOperation.CreateContent(content, isStreamNull ? null : contentStream, parentPath);
 
-            Assert.True(isFileCreated, $"{contentFile.Name} created succesfully");
+                bool isContentCreated = false;
+
+                if (isFolder)
+                    isContentCreated = Directory.Exists(Path.Join(contentOperation.MainPath, content.CreatedUserId.ToString(), parentPath, content.Name));
+                else
+                    isContentCreated = File.Exists(Path.Join(contentOperation.MainPath, content.CreatedUserId.ToString(), parentPath, content.Name));
+
+                Assert.True(isContentCreated, $"{content.Name} created succesfully");
+            }
         }
-
-
-        [Theory(DisplayName = "Create Folder Content")]
-        [InlineData("")]
-        [InlineData(@"\Files")]
-        [InlineData(null)]
-        [InlineData("0123456789")]
-        [InlineData("c188d074-a4d8-4105-9bc3-9fb2dddf08dd")]
-        [InlineData(@"\\\\\\Docs")]
-        public async Task CreateFolderContentInRoot(string parentPath)
-        {
-            await contentOperation.CreateContent(contentFolder, contentStream, parentPath);
-
-            bool isFolderCreated = Directory.Exists(Path.Join(contentOperation.MainPath, contentFolder.CreatedUserId.ToString(), parentPath, contentFolder.Name));
-
-            Assert.True(isFolderCreated, $"{contentFolder.Name} created succesfully");
-        }
-
-
 
     }
 }
