@@ -72,6 +72,7 @@ namespace unit_test
         [InlineData(null)]
         [InlineData("0123456789")]
         [InlineData("c188d074-a4d8-4105-9bc3-9fb2dddf08dd")]
+        [InlineData(@"\\\\\\Docs")]
         public async Task CreateFileContent(string parentPath)
         {
             await contentOperation.CreateContent(contentFile, contentStream, parentPath);
@@ -82,11 +83,15 @@ namespace unit_test
         }
 
 
-        [Fact(DisplayName = "Create Folder Content")]
-        public async Task CreateFolderContentInRoot()
+        [Theory(DisplayName = "Create Folder Content")]
+        [InlineData("")]
+        [InlineData(@"\Files")]
+        [InlineData(null)]
+        [InlineData("0123456789")]
+        [InlineData("c188d074-a4d8-4105-9bc3-9fb2dddf08dd")]
+        [InlineData(@"\\\\\\Docs")]
+        public async Task CreateFolderContentInRoot(string parentPath)
         {
-            string parentPath = string.Empty;
-
             await contentOperation.CreateContent(contentFolder, contentStream, parentPath);
 
             bool isFolderCreated = Directory.Exists(Path.Join(contentOperation.MainPath, contentFolder.CreatedUserId.ToString(), parentPath, contentFolder.Name));
