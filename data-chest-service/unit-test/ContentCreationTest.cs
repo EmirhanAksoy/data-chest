@@ -24,7 +24,7 @@ namespace unit_test
         }
 
 
-        [Theory(DisplayName = "Create File Content")]
+        [Theory(DisplayName = "Create File Content - Valid Stream")]
         [InlineData("", false)]
         [InlineData(@"\Files", false)]
         [InlineData(null, false)]
@@ -37,37 +37,52 @@ namespace unit_test
         [InlineData("0123456789", true)]
         [InlineData("c188d074-a4d8-4105-9bc3-9fb2dddf08dd", true)]
         [InlineData(@"\\\\\\Docs", true)]
-        [InlineData("", false, true)]
-        [InlineData(@"\Files", false, true)]
-        [InlineData(null, false, true)]
-        [InlineData("0123456789", false, true)]
-        [InlineData("c188d074-a4d8-4105-9bc3-9fb2dddf08dd", false, true)]
-        [InlineData(@"\\\\\\Docs", false, true)]
-        [InlineData("", true, true)]
-        [InlineData(@"\Files", true, true)]
-        [InlineData(null, true, true)]
-        [InlineData("0123456789", true, true)]
-        [InlineData("c188d074-a4d8-4105-9bc3-9fb2dddf08dd", true, true)]
-        [InlineData(@"\\\\\\Docs", true, true)]
-        public async Task CreateContent(string parentPath, bool isFolder, bool isStreamNull = false)
+
+        public async Task CreateContentWithValidStream(string parentPath, bool isFolder)
         {
             Content content = Contents.GetContent(isFolder);
 
-            if (isStreamNull && !isFolder)
-                await Assert.ThrowsAsync<ArgumentNullException>(async () => await contentOperation.CreateContent(content, null, parentPath));
+            await contentOperation.CreateContent(content, contentStream, parentPath);
+
+            bool isContentCreated = false;
+
+            if (isFolder)
+                isContentCreated = Directory.Exists(Path.Join(contentOperation.MainPath, content.CreatedUserId.ToString(), parentPath, content.Name));
             else
+                isContentCreated = File.Exists(Path.Join(contentOperation.MainPath, content.CreatedUserId.ToString(), parentPath, content.Name));
+
+            Assert.True(isContentCreated, $"{content.Name} created succesfully");
+        }
+
+        [Theory(DisplayName = "Create File Content - Invalid Stream")]
+        [InlineData("", false)]
+        [InlineData(@"\Files", false)]
+        [InlineData(null, false)]
+        [InlineData("0123456789", false)]
+        [InlineData("c188d074-a4d8-4105-9bc3-9fb2dddf08dd", false)]
+        [InlineData(@"\\\\\\Docs", false)]
+        [InlineData("", true)]
+        [InlineData(@"\Files", true)]
+        [InlineData(null, true)]
+        [InlineData("0123456789", true)]
+        [InlineData("c188d074-a4d8-4105-9bc3-9fb2dddf08dd", true)]
+        [InlineData(@"\\\\\\Docs", true)]
+
+        public async Task CreateContentWithInvalidStream(string parentPath, bool isFolder)
+        {
+            Content content = Contents.GetContent(isFolder);
+
+            if (isFolder)
             {
-                await contentOperation.CreateContent(content, isStreamNull ? null : contentStream, parentPath);
+                await contentOperation.CreateContent(content, null, parentPath);
 
-                bool isContentCreated = false;
-
-                if (isFolder)
-                    isContentCreated = Directory.Exists(Path.Join(contentOperation.MainPath, content.CreatedUserId.ToString(), parentPath, content.Name));
-                else
-                    isContentCreated = File.Exists(Path.Join(contentOperation.MainPath, content.CreatedUserId.ToString(), parentPath, content.Name));
+                bool isContentCreated = Directory.Exists(Path.Join(contentOperation.MainPath, content.CreatedUserId.ToString(), parentPath, content.Name));
 
                 Assert.True(isContentCreated, $"{content.Name} created succesfully");
             }
+            else
+                await Assert.ThrowsAsync<ArgumentNullException>(async () => await contentOperation.CreateContent(content, null, parentPath));
+
         }
 
     }
