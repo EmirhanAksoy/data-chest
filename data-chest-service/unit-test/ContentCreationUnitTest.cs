@@ -9,13 +9,13 @@ using unit_test.Mock.Theory;
 
 namespace unit_test
 {
-    public class ContentCreationTest
+    public class ContentCreationUnitTest
     {
         IContentOperation contentOperation = new ContentOperation();
 
         public readonly FileStream contentStream;
 
-        public ContentCreationTest()
+        public ContentCreationUnitTest()
         {
             contentOperation.MainPath = @"C:\Contents";
 
