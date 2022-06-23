@@ -30,13 +30,21 @@ namespace shared.Content_Operations
 
         public void DeleteContent(string path, bool isFolder, bool includeSubItems = true)
         {
-            if (isFolder && Directory.Exists(path))
+            if (isFolder)
             {
+                if (!Directory.Exists(path))
+                    throw new DirectoryNotFoundException(path);
+
                 Directory.Delete(path, includeSubItems);
-                return;
+            }
+            else
+            {
+                if (!File.Exists(path))
+                    throw new FileNotFoundException(path);
+
+                File.Delete(path);
             }
 
-            File.Delete(path);
         }
     }
 }
