@@ -6,11 +6,11 @@
 
         public bool IsDeleted { get; set; } = false;
 
-        public bool IsHidden { get; set; } = false;
+        public bool IsActive { get; set; } = false;
 
-        public DateTime CreateTime { get; set; }
+        public DateTime CreatedTime { get; set; }
 
-        public DateTime UpdateTime { get; set; }
+        public DateTime UpdatedTime { get; set; }
 
         public Guid CreatedUserId { get; set; }
 

@@ -12,6 +12,6 @@ namespace domain.Models
         public Guid ParentContentId { get; set; } = Guid.Empty;
         public string Extension { get; set; } = string.Empty;
         public bool IsPublic { get; set; } = false;
-        public bool IsInBin { get; set; } = false;
+        public bool IsInTrash { get; set; } = false;
     }
 }
