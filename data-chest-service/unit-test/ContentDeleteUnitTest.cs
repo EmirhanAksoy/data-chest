@@ -27,7 +27,7 @@ namespace unit_test
         [InlineData(true)]
         public async Task DeleteFileContentValidPath(bool includeSubItems)
         {
-            Content content = Contents.GetContent(isFolder: false);
+            Content content = ContentCreator.GetContent(isFolder: false);
 
             await contentOperation.CreateContent(content, contentStream, string.Empty);
 
@@ -45,7 +45,7 @@ namespace unit_test
         [InlineData(true)]
         public async Task DeteleFolderContentValidPath(bool includeSubItems)
         {
-            Content content = Contents.GetContent(isFolder: false);
+            Content content = ContentCreator.GetContent(isFolder: false);
 
             string parentFolder = "Files";
 

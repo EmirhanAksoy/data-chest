@@ -34,7 +34,7 @@ namespace unit_test
 
         public async Task CreateFileContentWithValidStream(string parentPath)
         {
-            Content content = Contents.GetContent(isFolder: false);
+            Content content = ContentCreator.GetContent(isFolder: false);
 
             await contentOperation.CreateContent(content, contentStream, parentPath);
 
@@ -53,7 +53,7 @@ namespace unit_test
 
         public async Task CreateFolderContentWithValidStream(string parentPath)
         {
-            Content content = Contents.GetContent(isFolder: true);
+            Content content = ContentCreator.GetContent(isFolder: true);
 
             await contentOperation.CreateContent(content, contentStream, parentPath);
 
@@ -72,7 +72,7 @@ namespace unit_test
 
         public async Task CreateFileContentWithInvalidStream(string parentPath)
         {
-            Content content = Contents.GetContent(isFolder:false);
+            Content content = ContentCreator.GetContent(isFolder:false);
 
             await Assert.ThrowsAsync<ArgumentNullException>(async () => await contentOperation.CreateContent(content, null, parentPath));
 
@@ -88,7 +88,7 @@ namespace unit_test
 
         public async Task CreateFolderContentWithInvalidStream(string parentPath)
         {
-            Content content = Contents.GetContent(isFolder: true);
+            Content content = ContentCreator.GetContent(isFolder: true);
 
             await contentOperation.CreateContent(content, null, parentPath);
 
