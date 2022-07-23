@@ -15,20 +15,20 @@ namespace unit_test.Mock.Theory
             {
                 Id = Guid.NewGuid(),
                 Name = isFolder ? "Docs Folder" :  "Test.png",
-                CreateTime = DateTime.Now,
+                CreatedTime = DateTime.Now,
                 CreatedUserId = Guid.NewGuid(),
                 Extension = ".png",
                 IsDeleted = false,
                 IsFolder = isFolder,
-                IsHidden = false,
-                IsInBin = false,
+                IsActive = true,
+                IsInTrash = false,
                 IsPublic = false,
                 ParentContentId = Guid.Empty,
                 Path = String.Empty,
                 Size = 0,
                 ThumbnailPath = String.Empty,
                 UpdatedUserId = Guid.Empty,
-                UpdateTime = DateTime.Now
+                UpdatedTime = DateTime.Now
             };
         }
     }
